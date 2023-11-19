@@ -63,11 +63,41 @@ describe('계산기 앱 테스트', () => {
     checkDisplayValue('124*123');
   });
 
-  xit('123+456을 순서대로 클릭하고 = 버튼을 클릭하면 display에 연산의 결과값이 표시된다.', () => {
+  xit('덧셈: 123+456을 순서대로 클릭하고 = 버튼을 클릭하면 display에 연산의 결과값이 표시된다.', () => {
     clickDigitButtons(['1', '2', '3']);
     clickOperationButtons('+');
     clickDigitButtons(['4', '5', '6']);
     clickOperationButtons('=');
     checkDisplayValue('579');
+  });
+
+  xit('뺄셈: 123-456을 순서대로 클릭하고 = 버튼을 클릭하면 display에 연산의 결과값이 표시된다.', () => {
+    clickDigitButtons(['1', '2', '3']);
+    clickOperationButtons('-');
+    clickDigitButtons(['4', '5', '6']);
+    clickOperationButtons('=');
+    checkDisplayValue('-333');
+  });
+
+  xit('곱셈: 123*456을 순서대로 클릭하고 = 버튼을 클릭하면 display에 연산의 결과값이 표시된다.', () => {
+    clickDigitButtons(['1', '2', '3']);
+    clickOperationButtons('*');
+    clickDigitButtons(['4', '5', '6']);
+    clickOperationButtons('=');
+    checkDisplayValue('56088');
+  });
+
+  xit('나눗셈: 123+456을 순서대로 클릭하고 = 버튼을 클릭하면 display에 연산의 결과값이 표시된다.', () => {
+    clickDigitButtons(['3', '6', '10']);
+    clickOperationButtons('/');
+    clickDigitButtons(['1', '2', '3']);
+    clickOperationButtons('=');
+    checkDisplayValue('3');
+  });
+
+  xit('AC 버튼을 클릭하면 display의 값이 0으로 표시된다.', () => {
+    clickDigitButtons(['1', '2', '3']);
+    cy.get('.modifier').click();
+    checkDisplayValue('0');
   });
 });
