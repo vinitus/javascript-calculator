@@ -3,10 +3,12 @@ function App() {
   const $total = document.querySelector('#total');
 
   const updateTotalDisplay = (e) => {
-    if (e.target.classList.contains('digit')) {
-      const currentTotal = $total.innerText;
-      $total.innerText = currentTotal === '0' ? e.target.innerText : currentTotal + e.target.innerText;
-    }
+    if (!e.target.classList.contains('digit')) return;
+
+    const currentTotal = $total.innerText;
+    const newDigit = e.target.innerText;
+
+    $total.innerText = currentTotal === '0' ? newDigit : currentTotal + newDigit;
   };
 
   $digits.addEventListener('click', updateTotalDisplay);
