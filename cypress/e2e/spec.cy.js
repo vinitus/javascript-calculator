@@ -5,7 +5,7 @@ const clickDigitButtons = (digits = []) => {
 };
 
 const clickOperationButtons = (operation) => {
-  cy.get('.operation').contains(operation);
+  cy.get('.operation').contains(operation).click();
 };
 
 const checkDisplayValue = (value) => {
@@ -43,7 +43,7 @@ describe('계산기 앱 테스트', () => {
     checkDisplayValue('124');
   });
 
-  xit('3개의 숫자 버튼을 누르고 연산자 버튼을 누르면 display에 연산자가 표시된다.', () => {
+  it('3개의 숫자 버튼을 누르고 연산자 버튼을 누르면 display에 연산자가 표시된다.', () => {
     clickDigitButtons(['1', '2', '4']);
     clickOperationButtons('*');
     checkDisplayValue('124*');

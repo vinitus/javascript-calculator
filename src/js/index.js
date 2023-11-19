@@ -1,10 +1,13 @@
 function App() {
   handlingDigitButtonClick();
 
-  document.querySelector('.operations').addEventListener('click', (e) => {
+  const $operations = document.querySelector('.operations');
+  const $total = document.querySelector('#total');
+
+  $operations.addEventListener('click', (e) => {
     if (!e.target.classList.contains('operation')) return;
 
-    document.querySelector('#total').innerText = document.querySelector('#total').innerText + e.target.innerText;
+    $total.innerText += e.target.innerText;
   });
 }
 
