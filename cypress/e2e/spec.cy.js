@@ -9,11 +9,19 @@ describe('계산기 앱 테스트', () => {
   });
 
   // 계산기에서 요구되는 것은 결국 결과값이 표시되어야한다.
-  // 그 중에서도 가장 작은 단위인 숫자가 표시되는가
-  it('숫자 버튼을 클릭하면 display에 숫자가 표시된다', () => {
+  // 그 중에서도 가장 작은 단위인 1개의 숫자가 표시되는가
+  it('1개의 숫자 버튼을 클릭하면 display에 숫자가 표시된다', () => {
     // contains()는 해당 문자열이 포함된 여러 HTML 요소 중 하나를 선택함
     // click은 해당 HTML 태그를 클릭처리
     cy.get('.digit').contains('1').click();
     cy.get('#total').should('have.text', 1);
+  });
+
+  it('2개의 숫자 버튼을 클릭하면 display에 숫자가 표시된다', () => {
+    // contains()는 해당 문자열이 포함된 여러 HTML 요소 중 하나를 선택함
+    // click은 해당 HTML 태그를 클릭처리
+    cy.get('.digit').contains('1').click();
+    cy.get('.digit').contains('2').click();
+    cy.get('#total').should('have.text', 12);
   });
 });
