@@ -62,4 +62,12 @@ describe('계산기 앱 테스트', () => {
     clickDigitButtons(['1', '2', '3']);
     checkDisplayValue('124*123');
   });
+
+  xit('123+456을 순서대로 클릭하고 = 버튼을 클릭하면 display에 연산의 결과값이 표시된다.', () => {
+    clickDigitButtons(['1', '2', '3']);
+    clickOperationButtons('+');
+    clickDigitButtons(['4', '5', '6']);
+    clickOperationButtons('=');
+    checkDisplayValue('579');
+  });
 });
