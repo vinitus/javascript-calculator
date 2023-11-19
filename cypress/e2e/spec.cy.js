@@ -4,6 +4,10 @@ const clickDigitButtons = (digits = []) => {
   });
 };
 
+const clickOperationButtons = (operation) => {
+  cy.get('.operation').contains(operation);
+};
+
 const checkDisplayValue = (value) => {
   cy.get('#total').should('have.text', value);
 };
@@ -41,20 +45,20 @@ describe('계산기 앱 테스트', () => {
 
   xit('3개의 숫자 버튼을 누르고 연산자 버튼을 누르면 display에 연산자가 표시된다.', () => {
     clickDigitButtons(['1', '2', '4']);
-    cy.get('.operation').contain('*').click();
+    clickOperationButtons('*');
     checkDisplayValue('124*');
   });
 
   xit('연사자 버튼을 여려번 누르면 display에 마지막 연산자만 표시한다.', () => {
     clickDigitButtons(['1', '2', '4']);
-    cy.get('.operation').contain('*').click();
-    cy.get('.operation').contain('-').click();
+    clickOperationButtons('*');
+    clickOperationButtons('-');
     checkDisplayValue('124-');
   });
 
   xit('연사자 다음의 2번째 숫자를 입력하면 display에 2번째 숫자를 누적하여 표시한다.', () => {
     clickDigitButtons(['1', '2', '4']);
-    cy.get('.operation').contain('*').click();
+    clickOperationButtons('*');
     clickDigitButtons(['1', '2', '3']);
     checkDisplayValue('124*123');
   });
